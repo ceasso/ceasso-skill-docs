@@ -3,7 +3,6 @@ name: Deploy Rspress site to Pages
 on:
   push:
     branches: [main]
-
   workflow_dispatch:
 
 permissions:
@@ -16,44 +15,48 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Not needed if lastUpdated is not enabled
-      - uses: yarn/action-setup@v3 # yarn is optional but recommended, you can also use npm / yarn
-        with:
-          version: 1.22.19
-      - name: Setup Node
+          fetch-depth: 0
+
+      # 修复：使用标准 Node 设置替代 yarn 专用 action
+      - name: Setup Node and Yarn
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: yarn
-      - name: Setup Pages
+          cache: yarn  # 启用 yarn 缓存
+
+      - name: Configure Pages
         uses: actions/configure-pages@v5
+
+      # 修复：显式安装 yarn 最新版
+      - name: Install Yarn
+        run: npm install -g yarn
+
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --frozen-lockfile
+
       - name: Build with Rspress
         run: |
-          yarn run build --verbose  # 添加详细日志输出
+          yarn run build --verbose
           echo "构建完成！输出目录内容:"
-          ls -la doc_build  # 验证输出目录
+          ls -la doc_build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: doc_build
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     needs: build
     runs-on: ubuntu-latest
-    name: Deploy
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
