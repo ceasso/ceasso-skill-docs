@@ -42,7 +42,7 @@ jobs:
 
       - name: Build with Rspress
         run: |
-          yarn run build --verbose
+          yarn build
           echo "构建完成！输出目录内容:"
           ls -la doc_build
 
