@@ -6,7 +6,8 @@
 # Dist
 node_modules
 dist/
-doc_build/
+# doc_build/
+# We can ignore it.
 
 # IDE
 .vscode/*
