@@ -23,40 +23,28 @@ jobs:
         with:
           fetch-depth: 0
 
+      # 修复：使用标准 Node 设置替代 yarn 专用 action
       - name: Setup Node and Yarn
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: yarn
-
-      # 获取仓库名称（小写）
-      - name: Get repository name
-        id: repo-name
-        run: |
-          REPO_NAME=$(echo ${{ github.repository }} | cut -d'/' -f2 | tr '[:upper:]' '[:lower:]')
-          echo "REPO_NAME=$REPO_NAME" >> $GITHUB_ENV
-          echo "::notice::Repository name set to: $REPO_NAME"
+          cache: yarn  # 启用 yarn 缓存
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
+      # 修复：显式安装 yarn 最新版
       - name: Install Yarn
         run: npm install -g yarn
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      # 使用仓库名称作为基础路径
       - name: Build with Rspress
         run: |
-          echo "构建基础路径: /$REPO_NAME/"
-          yarn run build --base /$REPO_NAME/
-          
-          # 验证构建输出
+          yarn build
           echo "构建完成！输出目录内容:"
           ls -la doc_build
-          echo "检查 index.html 中的基础路径:"
-          grep 'base href' doc_build/index.html || echo "未找到基础路径配置"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
