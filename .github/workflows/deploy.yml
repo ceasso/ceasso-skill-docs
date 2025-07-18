@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   # Build job
@@ -26,7 +26,7 @@ jobs:
           fetch-depth: 0 # Not needed if lastUpdated is not enabled
       - uses: yarn/action-setup@v3 # yarn is optional but recommended, you can also use npm / yarn
         with:
-          version: 8
+          version: 1.22.19
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -38,7 +38,9 @@ jobs:
         run: yarn install
       - name: Build with Rspress
         run: |
-          yarn run build
+          yarn run build --verbose  # 添加详细日志输出
+          echo "构建完成！输出目录内容:"
+          ls -la doc_build  # 验证输出目录
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
