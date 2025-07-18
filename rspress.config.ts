@@ -3,7 +3,7 @@ import { defineConfig } from 'rspress/config';
 
 export default defineConfig({
   root: path.join(__dirname, 'docs'),
-  title: 'My Site',
+  title: 'HAUST计算机类学生技能引导文档',
   base: "/ceasso-skill-docs/",
   icon: '/rspress-icon.png',
   logo: {

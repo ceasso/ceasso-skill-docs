@@ -2,19 +2,16 @@
 pageType: home
 
 hero:
-  name: My Site
-  text: A cool website!
-  tagline: This is the tagline
+  name: Ceasso
+  text: 计算机爱好者俱乐部
+  tagline: '这是一个新手向的教程文档，将带领你开始计算机的学习'
   actions:
     - theme: brand
       text: Quick Start
-      link: /guide/
+      link: /hello/
     - theme: alt
       text: GitHub
-      link: https://github.com/web-infra-dev/rspress
-  image:
-    src: /rspress-icon.png
-    alt: Logo
+      link: https://github.com/ceasso/ceasso-skill-docs
 features:
   - title: Blazing fast build speed
     details: The core compilation module is based on the Rust front-end toolchain, providing a more ultimate development experience.

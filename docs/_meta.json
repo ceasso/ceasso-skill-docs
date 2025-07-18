@@ -1,16 +1,27 @@
 [
   {
-    "text": "Guide",
-    "link": "/guide/",
-    "activeMatch": "/guide/"
-  },
-  {
-    "text": "Hello world",
+    "text": "指引",
     "link": "/hello/",
     "activeMatch": "/hello/"
   },
   {
-    "text": "API",
-    "link": "https://rspress.dev/api/index.html"
+    "text": "基本能力",
+    "link": "/basic/",
+    "activeMatch": "/basic/"
+  },
+  {
+    "text": "开发技能",
+    "link": "/advance/",
+    "activeMatch": "/advance/"
+  },
+  {
+    "text": "资源支持",
+    "link": "/resource/",
+    "activeMatch": "/resource/"
+  },
+  {
+    "text": "Contribute",
+    "link": "/guide/",
+    "activeMatch": "/guide/"
   }
 ]
