@@ -1,6 +1,6 @@
 [
   {
-    "text": "指引",
+    "text": "Guide",
     "link": "/hello/",
     "activeMatch": "/hello/"
   },
@@ -21,7 +21,7 @@
   },
   {
     "text": "Contribute",
-    "link": "/guide/",
-    "activeMatch": "/guide/"
+    "link": "/contribute/",
+    "activeMatch": "/contribute/"
   }
 ]

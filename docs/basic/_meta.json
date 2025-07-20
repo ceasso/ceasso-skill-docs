@@ -1,1 +1,23 @@
-["index","hello"]
+["index",
+  {
+    "type": "dir",
+    "name": "env_setup",
+    "label": "环境配置",
+    "collapsible": true,
+    "collapsed": true
+  },
+    {
+    "type": "dir",
+    "name": "tools_intro",
+    "label": "工具简介",
+    "collapsible": true,
+    "collapsed": true
+  },
+  {
+    "type": "dir",
+    "name": "basic_skill",
+    "label": "基本技能",
+    "collapsible": true,
+    "collapsed": true
+  }
+]
