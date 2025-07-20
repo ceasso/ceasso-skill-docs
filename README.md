@@ -5,7 +5,7 @@
 Install the dependencies:
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Get started
@@ -13,17 +13,17 @@ npm install
 Start the dev server:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Build the website for production:
 
 ```bash
-npm run build
+yarn build
 ```
 
 Preview the production build locally:
 
 ```bash
-npm run preview
+yarn preview
 ```
