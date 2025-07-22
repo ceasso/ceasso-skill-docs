@@ -11,6 +11,11 @@ export default defineConfig({
     dark: '/rspress-dark-logo.png',
   },
   themeConfig: {
+    lastUpdated: true,
+    lastUpdatedText: '最后更新时间',
+    enableContentAnimation: true, // Enable content animation on page load
+    enableAppearanceAnimation: true, // Enable appearance animation on days/nights toggle
+    hideNavbar: 'auto', // Always hide the navbar, can be 'always', 'mobile', or 'never'
     socialLinks: [
       {
         icon: 'github',
