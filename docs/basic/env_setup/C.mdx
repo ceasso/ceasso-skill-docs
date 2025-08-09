@@ -36,8 +36,152 @@ C语言是大部分同学接触的第一门编程语言，也是最基础的编�
 ## VSCode
 1. 进入官网：[VSCode](https://code.visualstudio.com/)
 2. 点击大大的 Download 按钮（如果是其他操作系统，可以点击下方小小的[other platforms](https://code.visualstudio.com/Download)，下载对应版本）
-3. 进行安装或解压缩（注意路径中不能存在任何中文字符，推荐仅用字母和数字）
+3. 进行安装或解压缩（注意路径中不能存在任何中文字符和空格，推荐仅用字母和数字，勾选所有附加选项）
+### VSCODE的c/c++环境配置
 
+#### windows11
+
+#####  安装 VSCode
+
+#####  中文界面和下载必要插件
+
+
+
+1. **中文界面**
+
+   → 打开 VSCode → 左侧栏点击 **Extensions（方块图标）** → 搜索 `Chinese`→ 安装 **简体中文包** → 右下角点 `Change Language and Restart`重启生效。
+
+   > 💡 重启后界面变中文，操作更直观！
+
+2. **C/C++ 开发插件**
+
+   → 插件商店搜索 `C/C++`→ 安装 **Microsoft 官方插件**（下载量最高的那个）
+
+   
+
+   
+
+#####  安装编译器（MinGW）
+
+> 🔑 **编译器是什么？**
+>
+> 它是把代码变成电脑能执行程序的工具，就像翻译官！
+
+1. **下载 MinGW**
+
+   → 访问：https://sourceforge.net/projects/mingw-w64/files/
+
+   → 按路径找到文件：
+
+   `Toolchains targetting Win64`→ `Personal Builds/mingw-builds/8.1.0/threads-posix/seh/`
+
+   → 下载 **x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z**
+
+   > ⚠️ 若下载慢，可找学长要安装包（文件约 50MB）
+
+2. **解压并记住位置**
+
+   → 解压到 **无中文/无空格** 的路径（如 `E:\mingw64`）
+
+   → 打开文件夹 → 进入 `bin`目录 → 复制地址栏路径（如 `E:\mingw64\bin`）
+
+#####  设置环境变量
+
+
+
+> 🌍 **环境变量作用**：告诉 Windows 在哪找编译器
+>
+> 相当于给系统指路牌
+
+1. 按 `Win + S`搜索 **“环境变量”** → 选 **“编辑系统环境变量”**
+
+2. 点击右下角 **环境变量** → 下方 **系统变量** 中找到 `Path`→ 点击 **编辑**
+
+3. 点击 **新建** → 粘贴刚复制的 `bin`路径 → 连续点三个 **确定** 保存
+
+   
+
+   
+
+   > ✅ 验证是否成功：
+   >
+   > 按 `Win + R`输入 `cmd`→ 输入 `g++ --version`
+   >
+   > 若显示版本号（如 8.1.0），则成功！
+
+
+
+##### 项目环境
+
+1. **新建项目文件夹**
+
+   → 创建 **纯英文，无空格的路径** 的文件夹（如 `D:\my_c_code`）
+
+   → 用 VSCode **打开此文件夹** → 点 **信任作者**
+
+2. **创建测试文件**
+
+   → 新建文件 → 命名 `test.c`→ 粘贴代码：
+
+```c
+#include<stdio.h>
+
+int main(){
+printf("hello world!");
+return 0;
+}
+```
+
+按ctrl+s保存代码
+
+3. **设置编译器路径**
+
+→ 按 `Ctrl+Shift+P`→ 输入 `C/C++ 编辑配置(UI)`
+
+→ 编译器路径选 `mingw64/bin/gcc.exe`
+
+→ IntelliSense 模式选 **`windows-gcc-x64`**
+
+#####  运行与调试
+
+1. **首次编译**
+
+   → 打开 `test.c`→ 按 `Ctrl+Shift+P`→ 输入 **“任务: 配置任务”**
+
+   → 选择 **“使用 gcc 生成活动文件”**
+
+2. **运行程序**
+
+   → 点击右上角 **▶️ 三角按钮**（或按 `F5`）
+
+   → 终端显示 `hello world！`即成功！
+
+   
+
+   
+
+#####  中文乱码问题
+
+把代码的hello world改成你好世界，按ctrl+alt+n，你会发现有输出，但是输出的可能是乱码。这是由于powershell的编码导致的。如果你的输出是乱码，在终端输入
+
+```shell
+if (!(Test-Path $PROFILE)) { New-Item -Type File -Path $PROFILE -Force }
+code $PROFILE
+
+```
+
+在打开的文件里输入
+
+```shell
+$OutputEncoding = [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+```
+
+重启vscode，再次运行，输出中文就正常了。
+
+#### Linux和macos
+
+大家发挥主观能动性自行上网搜索即可，相对windows比较简单。注意教程的时效性，尽量选择最新的来参考。
 
 ## Visual Studio
 1. 下载网址：[Visual Studio](https://visualstudio.microsoft.com/zh-hans/downloads/)
